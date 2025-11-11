@@ -1,0 +1,34 @@
+/GsimPhysicsListFactory/QGSP_BERT/buildAndRegister
+/GsimPrimaryGeneratorActionFactory/GsimGeneralParticleSource/buildAndRegister gps
+/gps/particle kaon0L
+/gps/energy 1 GeV
+/gps/position 0 0 -1 m
+/gps/direction 0 0 1
+/control/execute oglsini.mac
+#/GsimEventAction/setVisualizationMode 1
+#/GsimEventAction/setAccumulationNumber -1
+/GsimTrackingAction/setBriefTrackStore true
+
+/GsimPhysicsList/addPhaseSpaceDecay kaon0L pi0  e+ e-
+
+/GsimDetector/world/setParameters 5*m 5*m 60*m
+/GsimDetector/world/setOuterVisibility 0
+/GsimDetectorFactory/GsimDetector/buildAndRegister e14 /world
+
+/control/execute /group/had/koto2/mdgalati/step2geom15cm.mac
+
+/GsimDetector/world/e14/setThisAndDaughterMtimeStore true
+/GsimEventAction/setSkipEmptyData true
+
+/GsimSpectrumFactory/GsimE14Step2HNPointSpectrum/buildAndRegister
+/GsimSpectrum/GsimE14Step2HNPointSpectrum/addSpectrum Special
+/GsimSpectrum/GsimE14Step2HNPointSpectrum/setParameter 15*cm
+
+/GsimDetector/world/setThisUserTimeMax 1000 ns
+
+/GsimDetector/world/e14/setFastSimulationLevel 5
+/GsimDetector/world/e14/setThisAndDaughterHitsStore true
+
+/GsimDetectorManager/update
+/run/initialize
+#/run/beamOn 20
