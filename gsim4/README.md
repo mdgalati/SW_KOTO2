@@ -17,9 +17,9 @@ It might be convenient to add this to your ```~/.bashrc```
 ---
 
 ### Requirements
-A macro file that defines the detector geometry, i.e. [step2geom15cm.mac](https://github.com/mdgalati/SW_KOTO2/blob/main/step2geom15cm.mac)
+A macro file that defines the detector geometry, i.e. [step2geom15cm.mac](https://github.com/mdgalati/SW_KOTO2/blob/main/gsim4/step2geom15cm.mac)
 
-A macro defining beam and decay mode, i.e. [step2geom_step2mome15cm_pi0ee.mac](https://github.com/mdgalati/SW_KOTO2/blob/main/step2geom_step2mome15cm_pi0ee.mac)
+A macro defining beam and decay mode, i.e. [step2geom_step2mome15cm_pi0ee.mac](https://github.com/mdgalati/SW_KOTO2/blob/main/gsim4/step2geom_step2mome15cm_pi0ee.mac)
 
 ### Running the simulation
 ```gsim4test <your_macro>.mac <output_file>.root <#events> 0 0```
