@@ -1,0 +1,38 @@
+
+/GsimDetectorFactory/GsimTube/buildAndRegister   fbar     /world/e14  0 0 175/2.*cm 0 0 0
+/GsimDetector/world/e14/fbar/setParameters                40*cm 150*cm 175*cm 0 360*deg 
+/GsimDetector/world/e14/fbar/setOuterMaterial             G4_CESIUM_IODIDE
+/GsimDetector/world/e14/fbar/setOuterColor yellow
+/GsimDetector/world/e14/fbar/setSensitiveDetectorWithName FBAR 0
+
+/GsimDetectorFactory/GsimTubeWithAHole/buildAndRegister  ncc    /world/e14  0 0 (175-30-50./2.)*cm 0 0 0
+/GsimDetector/world/e14/ncc/setParameters                40*cm 50*cm 0 0 20*cm 20*cm
+/GsimDetector/world/e14/ncc/setOuterMaterial             G4_CESIUM_IODIDE
+/GsimDetector/world/e14/ncc/setOuterColor red
+/GsimDetector/world/e14/ncc/setSensitiveDetectorWithName NCC 0
+
+
+/GsimDetectorFactory/GsimTube/buildAndRegister     cbar  /world/e14  0 0 (100+2000/2.)*cm 0 0 0
+/GsimDetector/world/e14/cbar/setParameters                150*cm 200*cm 2000*cm 0 360*deg
+/GsimDetector/world/e14/cbar/setOuterMaterial             G4_CESIUM_IODIDE
+/GsimDetector/world/e14/cbar/setOuterColor blue
+/GsimDetector/world/e14/cbar/setSensitiveDetectorWithName CBAR 0
+
+
+/GsimDetectorFactory/GsimTubeWithAHole/buildAndRegister  csi   /world/e14  0 0 (2000+50/2.)*cm 0 0 0
+/GsimDetector/world/e14/csi/setParameters                150*cm 50*cm 0 0 20*cm 20*cm
+/GsimDetector/world/e14/csi/setOuterMaterial             G4_CESIUM_IODIDE
+/GsimDetector/world/e14/csi/setOuterColor lightskyblue
+/GsimDetector/world/e14/csi/setSensitiveDetectorWithName CSI 0
+
+/GsimDetectorFactory/GsimBoxWithoutABox/buildAndRegister cc04  /world/e14  0 0 (2000+50+400/2.)*cm 0 0 0
+/GsimDetector/world/e14/cc04/setParameters               65*cm 65*cm 400*cm 20*cm 20*cm 0 0 0
+/GsimDetector/world/e14/cc04/setOuterColor green
+/GsimDetector/world/e14/cc04/setSensitiveDetectorWithName CC04 0
+
+
+/GsimDetectorFactory/GsimBox/buildAndRegister     bhpv  /world/e14  0 0 (2000+50+400+10/2.)*cm 0 0 0
+/GsimDetector/world/e14/bhpv/setParameters              35*cm 35*cm 10*cm
+/GsimDetector/world/e14/bhpv/setOuterColor orange
+/GsimDetector/world/e14/bhpv/setSensitiveDetectorWithName BHPV 0
+
