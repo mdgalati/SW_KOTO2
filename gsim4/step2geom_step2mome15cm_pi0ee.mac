@@ -1,5 +1,6 @@
 ### Geant4 Physics list, in this case https://geant4.web.cern.ch/documentation/dev/plg_html/PhysicsListGuide/reference_PL/QGSP_BERT.html
 /GsimPhysicsListFactory/QGSP_BERT/buildAndRegister
+###
 
 ### Particle gun (GeneralParticleSource)
 /GsimPrimaryGeneratorActionFactory/GsimGeneralParticleSource/buildAndRegister gps
@@ -7,36 +8,48 @@
 /gps/energy 1 GeV
 /gps/position 0 0 -1 m
 /gps/direction 0 0 1
+###
 
 ### Particle spectrum. It modifies vertex and momentum of the particle gun.
 /GsimSpectrumFactory/GsimE14Step2HNPointSpectrum/buildAndRegister
 /GsimSpectrum/GsimE14Step2HNPointSpectrum/addSpectrum Special
 /GsimSpectrum/GsimE14Step2HNPointSpectrum/setParameter 15*cm
+###
 
 ### Visualisation
-/control/execute oglsini.mac #edit this to change visualisation mode (in window or in file)
-#/GsimEventAction/setVisualizationMode 1 #uncomment this and next line for in-window visualisation
-#/GsimEventAction/setAccumulationNumber 1 #number of events overplayed in some event display.
+# Execute the visualisation macro (window or file output)
+/control/execute oglsini.mac
+# Uncomment the next two lines for in-window visualisation
+/GsimEventAction/setVisualizationMode 1
+/GsimEventAction/setAccumulationNumber 0
+###
+
+# Save track info in output
 /GsimTrackingAction/setBriefTrackStore true
 
+### Decay
+# Add phase-space decay. QGSP_BERT will make pi0 decay into two photons
 /GsimPhysicsList/addPhaseSpaceDecay kaon0L pi0  e+ e-
 
+### Detectors
+#1) Global world volume size. 2) Hide the outer box of the world volume in the visualization. 3) Create a detector container called "e14" inside /world
 /GsimDetector/world/setParameters 5*m 5*m 60*m
 /GsimDetector/world/setOuterVisibility 0
 /GsimDetectorFactory/GsimDetector/buildAndRegister e14 /world
-
+# Execute macro that builds the sub-detectors inside e14 (e.g., FBAR). This macro defines geometry, materials, colors, and sensitive detectors
 /control/execute /group/had/koto2/mdgalati/step2geom15cm.mac
 
+# Store timing information
 /GsimDetector/world/e14/setThisAndDaughterMtimeStore true
+# Store hits for the e14 detector and all its daughter volumes
+/GsimDetector/world/e14/setThisAndDaughterHitsStore true
+# Skip events with no detector hits
 /GsimEventAction/setSkipEmptyData true
-
-
-
+# Stop tracking particles after 1000 ns (to save simulation time)
 /GsimDetector/world/setThisUserTimeMax 1000 ns
 
 /GsimDetector/world/e14/setFastSimulationLevel 5
-/GsimDetector/world/e14/setThisAndDaughterHitsStore true
-
 /GsimDetectorManager/update
 /run/initialize
+# Next line only needed in interactive mode
 #/run/beamOn 20
