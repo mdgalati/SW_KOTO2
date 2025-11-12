@@ -1,6 +1,7 @@
 #/vis/scene/create
-/vis/open VRML2FILE #for .wrl output file
-#/vis/open OGLSX #for xquartz window
+#1st option generates a .wrl output file, 2nd opens a XQuartz window
+/vis/open VRML2FILE
+#/vis/open OGLSX
 /vis/viewer/reset
 /vis/drawVolume
 /vis/viewer/set/lineSegmentsPerCircle 256
